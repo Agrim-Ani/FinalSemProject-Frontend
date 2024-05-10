@@ -1,0 +1,89 @@
+/* Base styling for the authentication form container */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 130px;
+    background: #f7f7f7;
+    border-radius: 8px;
+}
+
+.internal-form{
+    width: 80%;
+}
+
+/* Logo at the top of the form */
+.auth-form .logo {
+    width: 80px;
+    /* Adjust size as needed */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Heading style */
+.auth-form h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.auth-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    display: block;
+}
+
+/* Input field styling */
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    font-size: large;
+}
+
+/* Button styling */
+.auth-form button {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.auth-form button:hover {
+    background-color: #004085;
+}
+
+/* Error message display */
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments for smaller devices */
+@media (max-width: 768px) {
+    .auth-form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .auth-form .logo {
+        width: 70px;
+    }
+}

@@ -1,0 +1,75 @@
+/* .main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+    background: yellow;
+} */
+.home-container {
+    text-align: center;
+    padding: 50px;
+    margin-top: 130px;
+    /* Adjust based on your navbar's height */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    width: 120px;
+    /* Adjust size as needed */
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.repo-link {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    color: #f7f7f7;
+    background-color: #0056b3;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.repo-link:hover {
+    background-color: #002766;
+    color: #e1e1e1;
+    }
+
+@media (max-width: 768px) {
+    .home-container {
+        width: 90%;
+        padding: 30px;
+    }
+}
+.upload-area {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+}
+
+.upload-message {
+    color: green;
+    margin-top: 10px;
+}
