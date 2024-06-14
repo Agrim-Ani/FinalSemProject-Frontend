@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/AuthForm.css'; // CSS file for styling forms
-
+// const BASE_PATH = 'https://finalsemproject-backend.onrender.com';
+const BASE_PATH = 'http://localhost:4000';
 function Login() {
     const [credentials, setCredentials] = useState({ email: '', password: '' });
     const [errorMessage, setErrorMessage] = useState('');
@@ -9,7 +10,7 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/users/login', credentials);
+            const response = await axios.post(BASE_PATH.concat('/api/users/login'), credentials);
             localStorage.setItem('token', response.data.accessToken);
             window.location.href = '/dashboard'; // Redirect on successful login
         } catch (error) {

@@ -1,10 +1,10 @@
 .dashboard-container {
     display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
-    padding: 20px;
-    justify-content: center;
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    overflow: hidden;
 }
 
 .file-selector-container {
@@ -40,24 +40,24 @@
 
 .sidebar {
     display: flex;
-    top: 80px;
-        /* Start the sidebar below the navbar */
     width: 320px;
     position: fixed;
     left: -320px;
+    top: 0;
     bottom: 0;
     background: #f9f9f9;
     overflow-y: auto;
     transition: left 0.3s;
     z-index: 500;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 }
 
 .sidebar.open {
     left: 0;
 }
-
-
 
 .sidebar-header {
     z-index: 950;
@@ -65,7 +65,6 @@
     transition: left 0.3s;
     top: 50%;
     left: 320px;
-    display: flex;
 }
 
 .sidebar-header.open {
@@ -86,6 +85,9 @@
     margin-bottom: 20px;
     padding: 0;
     list-style: none;
+    margin-top: 27px;
+    overflow-y: scroll;
+    /* overflow-x: hidden; */
 }
 
 .file-item {
@@ -95,8 +97,11 @@
     border-bottom: 1px solid #e1e1e1;
 }
 
-.file-item:last-child {
+.file-test {
     border-bottom: none;
+    padding: 10px;
+    /* position: fixed;
+    bottom: 0; */
 }
 
 .file-item:hover {
@@ -113,16 +118,30 @@
 }
 
 .text-section {
-    flex: 2;
+    flex: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #fafafa;
+    justify-content: top;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Transparent background */
     border: 1px solid #eaeaea;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* height: fit-content; */
+    box-shadow: 0 2px 4px rgba(195, 170, 170, 0.1);
     padding: 50px;
     border-radius: 10px;
+    color: white;
+    /* White text color */
+    height: 75%;
+    /* Take almost full height */
+    margin: 20px;
+    /* Some padding around */
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+    
+}
+
+.text-section h2 {
+    margin-bottom: 20px;
 }
 
 .text-button {
@@ -146,6 +165,9 @@
 
 .file-content {
     white-space: pre-wrap;
+    color: white;
+    text-wrap: wrap;
+    /* Ensure text color is white */
 }
 
 .file-input {
@@ -176,12 +198,23 @@
     background-color: #0056b3;
 }
 
-.upload-showText{
+.upload-showText {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    margin-top: 30%;
-    margin-bottom: 2px;
     align-items: center;
-    width: 150%;
+    width: 100%;
+    /* Ensure it covers full width */
+}
+
+.content {
+    flex: 1;
+    margin-left: 0px;
+    /* Space for the sidebar */
+    transition: margin-left 0.3s;
+}
+
+.content.shifted {
+    margin-left: 320px;
+    /* When sidebar is closed */
 }

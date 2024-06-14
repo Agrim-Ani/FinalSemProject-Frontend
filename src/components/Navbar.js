@@ -4,14 +4,14 @@ import '../styles/Navbar.css'; // Make sure the path to the CSS file is correct
 
 function Navbar() {
     return (
-        <nav className="navbar">
+         <nav className="navbar">
             <Link to="/" className="navbar-brand">
                 <img src="/DocSummary.png" alt="DocSummary Logo" className="navbar-logo" />
                 DocSummary
             </Link>
-            <div className="nav-links">
-                <Link to="/login" className="nav-link">Login</Link>
-                <Link to="/register" className="nav-link">Sign Up</Link>
+            <div className="repo-links">
+                    <a href="https://github.com/yourusername/backend-repo" className="repo-link">Backend Repo</a>
+                    <a href="https://github.com/yourusername/ml-repo" className="repo-link">ML Logic Repo</a>
             </div>
         </nav>
     );

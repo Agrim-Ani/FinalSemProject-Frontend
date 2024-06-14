@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import '../styles/Dashboard.css'; // Ensure the CSS file path is correct
-import { IoIosArrowForward } from "react-icons/io";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+// const BASE_PATH = 'https://finalsemproject-backend.onrender.com';
+const BASE_PATH = 'http://localhost:4000';
 
 function Dashboard() {
     const [files, setFiles] = useState([]);
@@ -13,11 +14,9 @@ function Dashboard() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const token = localStorage.getItem('token');
 
-    // Redirect if not logged in
-    
     const fetchFiles = useCallback(async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/files/list', {
+            const response = await axios.get(BASE_PATH.concat('/api/files/list'), {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             setFiles(response.data);
@@ -27,11 +26,9 @@ function Dashboard() {
     }, [token]);
 
     useEffect(() => {
-            fetchFiles();
-        }, [fetchFiles, token]);
-    // if (!token) {
-    //         return <Navigate to="/" replace />;
-    //     }
+        fetchFiles();
+    }, [fetchFiles, token]);
+
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0]);
         setUploadMessage('');
@@ -45,7 +42,7 @@ function Dashboard() {
         const formData = new FormData();
         formData.append('file', selectedFile);
         try {
-            await axios.post('http://localhost:4000/api/files/upload', formData, {
+            await axios.post(BASE_PATH.concat('/api/files/upload'), formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`
@@ -71,10 +68,12 @@ function Dashboard() {
             return;
         }
         try {
-            const response = await axios.get(`http://localhost:4000/api/files/${selectedFileId}`, {
+            const response = await axios.get(BASE_PATH.concat(`/api/files/${selectedFileId}`), {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             setFileText(response.data.content); // Assuming the server response contains a property 'content'
+            // console.log(response.data.content);
+            console.log(JSON.parse(response.data.content));
         } catch (error) {
             console.error('Failed to fetch text:', error);
             setUploadMessage('Failed to fetch text: ' + error.message);
@@ -83,40 +82,41 @@ function Dashboard() {
 
     return (
         <div className="dashboard-container">
-        <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
-            
-            <ul className="file-list">
-                {files.map(file => (
-                    <li key={file._id} className="file-item">
-                        <input
-                            type="radio"
-                            value={file._id}
-                            onChange={() => setSelectedFileId(file._id)}
-                            checked={selectedFileId === file._id}
-                        />
-                        {file.filename}
-                    </li>
-                ))}
-                <li className="file-item">
-                <input type="file" id="fileInput" className="file-input" onChange={handleFileSelect} />
-                <button className="file-upload-btn" onClick={handleFileUpload}>Upload File</button>
-                {uploadMessage && <div className="upload-message">{uploadMessage}</div>}
-            </li>
-            </ul>
-            
-        </div>
+            <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+                <ul className="file-list">
+                    {files.map(file => (
+                        <li key={file._id} className="file-item">
+                            <input
+                                type="radio"
+                                value={file._id}
+                                onChange={() => setSelectedFileId(file._id)}
+                                checked={selectedFileId === file._id}
+                                id={`${file._id}`}
+                            />
+                                    <label for={`${file._id}`}>{file.filename}</label><br></br>
+                        </li>
+                    ))}
+                </ul>
+                                    <div className="file-test">
+                        <input type="file" id="fileInput" className="file-input" onChange={handleFileSelect} />
+                        <button className="file-upload-btn" onClick={handleFileUpload}>Upload File</button>
+                        <button className="text-button" onClick={handleFetchText}>Generate Text</button>
+                        {uploadMessage && <div className="upload-message">{uploadMessage}</div>}
+                    </div>
+            </div>
             <div className={`sidebar-header ${isSidebarOpen ? '' : 'open'}`}>
                 <button className="sidebar-toggle-btn" onClick={toggleSidebar}>
                     {isSidebarOpen ? <IoIosArrowBack /> : <IoIosArrowForward />}
                 </button>
             </div>
-        <div className='upload-showText'>
-        <button className="text-button" onClick={handleFetchText}>Generate Text</button>
-        <div className="text-section">
-            <div className="file-content">{fileText || 'Select a file to see text here.'}</div>
+            <div className={`content ${isSidebarOpen ? 'shifted' : ''}`}>
+                <button className="text-button" onClick={handleFetchText}>Generate Text</button>
+                <div className="text-section">
+                    <h2>Here is the summary</h2>
+                    <div className="file-content">{fileText || 'Select a file to see text here.'}</div>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
     );
 }
 
