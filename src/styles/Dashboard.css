@@ -39,6 +39,7 @@
 }
 
 .sidebar {
+    margin-top: 50px;
     display: flex;
     width: 320px;
     position: fixed;
@@ -57,6 +58,7 @@
 
 .sidebar.open {
     left: 0;
+    margin-top: 50px;
 }
 
 .sidebar-header {

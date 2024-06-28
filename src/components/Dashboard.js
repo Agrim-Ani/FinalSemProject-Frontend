@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import '../styles/Dashboard.css'; // Ensure the CSS file path is correct
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { styleText } from 'util';
+import { MdMargin } from 'react-icons/md';
 // const BASE_PATH = 'https://finalsemproject-backend.onrender.com';
 const BASE_PATH = 'http://localhost:4000';
 
@@ -82,7 +84,7 @@ function Dashboard() {
 
     return (
         <div className="dashboard-container">
-            <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+            <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`} >
                 <ul className="file-list">
                     {files.map(file => (
                         <li key={file._id} className="file-item">
