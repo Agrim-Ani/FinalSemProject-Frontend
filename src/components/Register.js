@@ -23,8 +23,8 @@ function Register() {
 
     return (
         <div className="auth-form">
-            <img src="/DocSummary.png" alt="DocSummary Logo" className="logo" />
-            <h1>DocSummary</h1>
+            <img src="/ReportSage1.png" alt="ReportSage Logo" className="logo" />
+            <h1>ReportSage</h1>
             <form onSubmit={handleSubmit} className='internal-form'>
                 <label>Username:</label>
                 <input type="text" value={user.username} onChange={e => setUser({ ...user, username: e.target.value })} />

@@ -33,7 +33,7 @@ h1 {
 }
 
 p {
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: auto;
     margin-bottom: 20px;
     font-size: 16px;

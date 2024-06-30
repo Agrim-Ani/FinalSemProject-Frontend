@@ -20,8 +20,8 @@ function Login() {
 
     return (
         <div className="auth-form">
-            <img src="/DocSummary.png" alt="DocSummary Logo" className="logo" />
-            <h1>DocSummary</h1>
+            <img src="/ReportSage1.png" alt="DocSummary Logo" className="logo" />
+            <h1>ReportSage</h1>
             <form onSubmit={handleSubmit} className='internal-form'>
                 <label>Email:</label>
                 <input type="email" value={credentials.email} onChange={e => setCredentials({ ...credentials, email: e.target.value })} />

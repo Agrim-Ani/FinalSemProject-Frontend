@@ -6,9 +6,10 @@ function HomePage() {
     return (
         // <div className='main'>
             <div className="home-container">
-                <img src="/DocSummary.png" alt="DocSummary Logo" className="logo" />
-                <h1>Welcome to DocSummary</h1>
-                <p>DocSummary automates the process of summarizing text documents using advanced machine learning techniques, making document handling efficient and user-friendly.</p>
+                <img src="/ReportSage1.png" alt="DocSummary Logo" className="logo" />
+                <h1>Welcome to ReportSage</h1>
+                <p>ReportSage is a LLM tool engineered to analyze Earning Calls, Investor Reports & Financial transcribed conversation/documents.<br></br>
+                Powered by GROQ - AI Inference Engine offering the capabilities of latest state of the art Large Language models.</p>
                 <div className="repo-links">
                     <Link to="/login" className="nav-link">Login</Link>
                     <Link to="/register" className="nav-link">Sign Up</Link>
